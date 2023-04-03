@@ -81,15 +81,17 @@ export async function runInstance(client: EC2Client, props: RunInstanceProps): P
       }
     ],
     UserData: props.userData ? Buffer.from(props.userData.join('\n')).toString('base64') : undefined,
-    TagSpecifications: [
-      {
-        ResourceType: 'instance',
-        Tags: Object.entries(props.tags ?? {}).map(([key, value]) => ({Key: key, Value: value}))
-      }
-    ],
-    // IamInstanceProfile: {
-    //   Name: props.instanceProfile
-    // }
+    TagSpecifications: props.tags
+      ? [
+          {
+            ResourceType: 'instance',
+            Tags: Object.entries(props.tags ?? {}).map(([key, value]) => ({Key: key, Value: value}))
+          }
+        ]
+      : undefined,
+    IamInstanceProfile: {
+      Name: props.instanceProfile
+    }
   })
   try {
     const output = await client.send(command)
