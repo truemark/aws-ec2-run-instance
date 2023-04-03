@@ -27,7 +27,7 @@ function optionalValues(value: string, allowedValues: string[]): string | undefi
 }
 
 function undefinedIfEmpty(value: string): string | undefined {
-  if (!value) return undefined
+  if (!value || value === '') return undefined
   return value
 }
 
