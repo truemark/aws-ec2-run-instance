@@ -26,6 +26,11 @@ function optionalValues(value: string, allowedValues: string[]): string | undefi
   return value
 }
 
+function undefinedIfEmpty(value: string): string | undefined {
+  if (!value) return undefined
+  return value
+}
+
 export const config = {
   region: required(getInput('region')),
   securityGroupId: required(getInput('security-group-id')),
@@ -35,7 +40,7 @@ export const config = {
   imageId: required(getInput('image-id')),
   volumeSize: optionalNumber(getInput('volume-size')),
   associatePublicIpAddress: optionalBoolean(getInput('associate-public-ip-address')),
-  keyName: getInput('key-name'),
+  keyName: undefinedIfEmpty(getInput('key-name')),
   tags: optionalJson<{[key: string]: string}>(getInput('tags')),
   userData: optionalJson<string[]>(getInput('user-data')),
   instanceShutdownBehavior: optionalValues(getInput('instance-shutdown-behavior'),

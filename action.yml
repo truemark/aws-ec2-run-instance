@@ -38,6 +38,9 @@ inputs:
   region:
     required: true
     description: 'AWS region to use for the EC2 instance'
+  key-name:
+    required: false
+    description: 'SSH key name to use for the EC2 instance'
 outputs:
   instance-id:
     description: 'The instance ID of the EC2 instance'
