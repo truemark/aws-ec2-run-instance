@@ -1,11 +1,46 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'AWS EC2 Run Instance'
+description: ''
+author: 'GitHub action which creates and runs and EC2 instance'
 inputs:
-  milliseconds: # change this
+  subnet-id:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'Subnet to place the EC2 instance'
+  security-group-id:
+    required: true
+    description: 'Security group to apply to the EC2 instance'
+  image-id:
+    required: true
+    description: 'Image ID to use for the EC2 instance. Also accepts default-arm64 and default-amd64 options'
+  instance-type:
+    required: true
+    description: 'Instance type to use for the EC2 instance'
+  instance-profile:
+    required: false
+    description: 'Instance profile to use for the EC2 instance'
+  volume-size:
+    required: false
+    description: 'Volume size in GB to use for the EC2 instance'
+    default: '8'
+  associate-public-ip-address:
+    required: false
+    description: 'Associate a public IP address to the EC2 instance'
+    default: 'true'
+  tags:
+    required: false
+    description: 'Tags to apply to the EC2 instance'
+  user-data:
+    required: false
+    description: 'Startup commands to run on the EC2 instance'
+  instance-shutdown-behavior:
+    required: false
+    description: 'Shutdown behavior for the EC2 instance. This may be stop or terminate.'
+    default: 'terminate'
+  region:
+    required: true
+    description: 'AWS region to use for the EC2 instance'
+outputs:
+  instance-id:
+    description: 'The instance ID of the EC2 instance'
 runs:
   using: 'node16'
   main: 'dist/index.js'
