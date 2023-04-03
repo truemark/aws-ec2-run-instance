@@ -87,9 +87,9 @@ export async function runInstance(client: EC2Client, props: RunInstanceProps): P
         Tags: Object.entries(props.tags ?? {}).map(([key, value]) => ({Key: key, Value: value}))
       }
     ],
-    IamInstanceProfile: {
-      Name: props.instanceProfile
-    }
+    // IamInstanceProfile: {
+    //   Name: props.instanceProfile
+    // }
   })
   try {
     const output = await client.send(command)
