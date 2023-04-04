@@ -31,6 +31,9 @@ export async function getImageId(client: SSMClient, name: string): Promise<strin
   return output.Parameter.Value
 }
 
+/**
+ * Properties for running an instance
+ */
 export interface RunInstanceProps {
   readonly securityGroupId: string
   readonly imageId: string
@@ -45,14 +48,12 @@ export interface RunInstanceProps {
   readonly instanceProfile?: string
 }
 
-export interface RunInstanceResult {
-  readonly instanceId?: string
-  readonly publicIpAddress?: string
-  readonly publicDnsName?: string
-  readonly privateIpAddress?: string
-  readonly privateDnsName?: string
-}
-
+/**
+ * Runs an EC2 instance
+ * @param client the EC2 client
+ * @param props the properties for the instance
+ * @returns the instance id
+ */
 export async function runInstance(client: EC2Client, props: RunInstanceProps): Promise<string> {
   const command = new RunInstancesCommand({
     ImageId: props.imageId,

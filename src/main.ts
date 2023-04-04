@@ -2,10 +2,11 @@ import {defaultAmd64ImageId, defaultArm64ImageId, runInstance} from './instance'
 import {setFailed, setOutput} from '@actions/core'
 import {EC2Client} from '@aws-sdk/client-ec2'
 import {SSMClient} from '@aws-sdk/client-ssm'
-import {config} from './config'
+import {loadConfig} from './config'
 
 async function run(): Promise<void> {
   try {
+    const config = loadConfig()
     const ssmClient = new SSMClient({region: config.region})
     const ec2Client = new EC2Client({region: config.region})
 
