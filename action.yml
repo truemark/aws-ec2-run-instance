@@ -1,6 +1,6 @@
 name: 'AWS EC2 Run Instance'
-description: ''
-author: 'GitHub action which creates and runs and EC2 instance'
+description: 'GitHub action which creates and runs and EC2 instance'
+author: 'TrueMark'
 inputs:
   subnet-id:
     required: true
