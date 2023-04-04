@@ -1,5 +1,5 @@
 import {expect, test} from '@jest/globals'
-import {required} from './config'
+import {required} from '../src/config'
 
 test('required input undefined', () => {
   expect(() => required(undefined)).toThrow('Required input is missing')
