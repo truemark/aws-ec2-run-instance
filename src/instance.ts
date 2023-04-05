@@ -65,7 +65,7 @@ export async function runInstance(client: EC2Client, props: RunInstanceProps): P
     KeyName: props.keyName,
     BlockDeviceMappings: [
       {
-        DeviceName: '/dev/sda1',
+        DeviceName: '/dev/xvda',
         Ebs: {
           VolumeSize: props.volumeSize ?? 8,
           DeleteOnTermination: true,
