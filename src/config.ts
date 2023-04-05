@@ -37,18 +37,19 @@ export function undefinedIfEmpty(value: string): string | undefined {
 }
 
 export interface Config {
-  region: string
-  securityGroupId: string
-  subnetId: string
-  instanceType: string
-  instanceProfile: string
-  imageId: string
-  volumeSize?: number
-  associatePublicIpAddress?: boolean
-  keyName?: string
-  tags?: {[key: string]: string}
-  userData?: string[]
-  instanceShutdownBehavior?: string
+  readonly region: string
+  readonly securityGroupId: string
+  readonly subnetId: string
+  readonly instanceType: string
+  readonly instanceProfile: string
+  readonly imageId: string
+  readonly volumeSize?: number
+  readonly associatePublicIpAddress?: boolean
+  readonly keyName?: string
+  readonly tags?: {[key: string]: string}
+  readonly userData?: string[]
+  readonly instanceShutdownBehavior?: string
+  readonly useSpot: boolean
 }
 
 export function loadConfig(): Config {
@@ -64,6 +65,7 @@ export function loadConfig(): Config {
     keyName: undefinedIfEmpty(getInput('key-name')),
     tags: optionalJson<{[key: string]: string}>(getInput('tags')),
     userData: optionalArray(getInput('user-data')),
-    instanceShutdownBehavior: optionalValues(getInput('instance-shutdown-behavior'), ['stop', 'terminate'])
+    instanceShutdownBehavior: optionalValues(getInput('instance-shutdown-behavior'), ['stop', 'terminate']),
+    useSpot: optionalBoolean(getInput('spot')) ?? true
   }
 }

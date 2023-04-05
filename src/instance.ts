@@ -46,6 +46,7 @@ export interface RunInstanceProps {
   readonly userData?: string[]
   readonly instanceShutdownBehavior?: string
   readonly instanceProfile?: string
+  readonly useSpot?: boolean
 }
 
 /**
@@ -92,7 +93,8 @@ export async function runInstance(client: EC2Client, props: RunInstanceProps): P
       : undefined,
     IamInstanceProfile: {
       Name: props.instanceProfile
-    }
+    },
+    InstanceMarketOptions: props.useSpot ? {MarketType: 'spot'} : undefined
   })
   try {
     const output = await client.send(command)

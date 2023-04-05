@@ -41,6 +41,10 @@ inputs:
   key-name:
     required: false
     description: 'SSH key name to use for the EC2 instance'
+  use-spot:
+    required: false
+    description: 'Use a spot instance for the EC2 instance'
+    default: 'true'
 outputs:
   instance-id:
     description: 'The instance ID of the EC2 instance'
