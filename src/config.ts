@@ -26,6 +26,11 @@ export function optionalValues(value: string, allowedValues: string[]): string |
   return value
 }
 
+export function optionalArray(value: string, delimiter?: string): string[] | undefined {
+  if (!value) return undefined
+  return value.split(delimiter ?? '\n')
+}
+
 export function undefinedIfEmpty(value: string): string | undefined {
   if (!value || value === '') return undefined
   return value
@@ -58,7 +63,7 @@ export function loadConfig(): Config {
     associatePublicIpAddress: optionalBoolean(getInput('associate-public-ip-address')),
     keyName: undefinedIfEmpty(getInput('key-name')),
     tags: optionalJson<{[key: string]: string}>(getInput('tags')),
-    userData: optionalJson<string[]>(getInput('user-data')),
+    userData: optionalArray(getInput('user-data')),
     instanceShutdownBehavior: optionalValues(getInput('instance-shutdown-behavior'), ['stop', 'terminate'])
   }
 }

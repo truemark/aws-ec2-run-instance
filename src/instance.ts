@@ -55,7 +55,6 @@ export interface RunInstanceProps {
  * @returns the instance id
  */
 export async function runInstance(client: EC2Client, props: RunInstanceProps): Promise<string> {
-  console.log('User Data', JSON.stringify(props.userData))
   const command = new RunInstancesCommand({
     ImageId: props.imageId,
     InstanceType: props.instanceType,
