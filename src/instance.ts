@@ -93,8 +93,7 @@ export async function runInstance(client: EC2Client, props: RunInstanceProps): P
       : undefined,
     IamInstanceProfile: {
       Name: props.instanceProfile
-    },
-    InstanceMarketOptions: props.useSpot ? {MarketType: 'spot'} : undefined
+    }
   })
   try {
     const output = await client.send(command)

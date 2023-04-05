@@ -49,7 +49,6 @@ export interface Config {
   readonly tags?: {[key: string]: string}
   readonly userData?: string[]
   readonly instanceShutdownBehavior?: string
-  readonly useSpot: boolean
 }
 
 export function loadConfig(): Config {
@@ -65,7 +64,6 @@ export function loadConfig(): Config {
     keyName: undefinedIfEmpty(getInput('key-name')),
     tags: optionalJson<{[key: string]: string}>(getInput('tags')),
     userData: optionalArray(getInput('user-data')),
-    instanceShutdownBehavior: optionalValues(getInput('instance-shutdown-behavior'), ['stop', 'terminate']),
-    useSpot: optionalBoolean(getInput('spot')) ?? true
+    instanceShutdownBehavior: optionalValues(getInput('instance-shutdown-behavior'), ['stop', 'terminate'])
   }
 }
