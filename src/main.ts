@@ -1,5 +1,5 @@
 import {defaultAmd64ImageId, defaultArm64ImageId, runInstance} from './instance'
-import {setFailed, setOutput} from '@actions/core'
+import { info, setFailed, setOutput } from "@actions/core";
 import {EC2Client} from '@aws-sdk/client-ec2'
 import {SSMClient} from '@aws-sdk/client-ssm'
 import {loadConfig} from './config'
@@ -35,6 +35,7 @@ async function run(): Promise<void> {
       instanceProfile: config.instanceProfile
     })
     setOutput('instance-id', id)
+    info(`Instance ${id} started`)
   } catch (error) {
     if (error instanceof Error) setFailed(error.message)
   }
