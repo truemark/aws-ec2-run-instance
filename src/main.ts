@@ -10,9 +10,6 @@ async function run(): Promise<void> {
     const ssmClient = new SSMClient({region: config.region})
     const ec2Client = new EC2Client({region: config.region})
 
-    // const ssmClient = new SSMClient({region: 'us-east-2'})
-    // const ec2Client = new EC2Client({region: 'us-east-2'})
-
     let imageId = config.imageId
     if (imageId === 'default-arm64') {
       imageId = await defaultArm64ImageId(ssmClient)
