@@ -1,4 +1,4 @@
-import {EC2Client, RunInstancesCommand} from '@aws-sdk/client-ec2'
+import {EC2Client, RunInstancesCommand, TerminateInstancesCommand} from '@aws-sdk/client-ec2'
 import {GetParameterCommand, SSMClient} from '@aws-sdk/client-ssm'
 
 /**
@@ -100,6 +100,18 @@ export async function runInstance(client: EC2Client, props: RunInstanceProps): P
     if (output.Instances == null || output.Instances.length === 0 || output.Instances[0].InstanceId == null)
       throw new Error('No instance returned')
     return output.Instances[0].InstanceId
+  } catch (error) {
+    if (error instanceof Error) throw error
+    throw new Error('Unknown error')
+  }
+}
+
+export async function terminateInstance(client: EC2Client, instanceId: string): Promise<void> {
+  const command = new TerminateInstancesCommand({
+    InstanceIds: [instanceId]
+  })
+  try {
+    await client.send(command)
   } catch (error) {
     if (error instanceof Error) throw error
     throw new Error('Unknown error')

@@ -41,9 +41,14 @@ inputs:
   key-name:
     required: false
     description: 'SSH key name to use for the EC2 instance'
+  terminate-on-post:
+    required: false
+    description: 'Terminate the EC2 instance after the post step'
+    default: 'true'
 outputs:
   instance-id:
     description: 'The instance ID of the EC2 instance'
 runs:
   using: 'node16'
   main: 'dist/index.js'
+  post: 'dist/index.js'
