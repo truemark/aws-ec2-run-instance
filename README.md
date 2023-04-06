@@ -4,7 +4,7 @@
 
 # AWS EC2 Run Instance Action
 
-This action will create and run an AWS EC2 instance.
+This action will create and run an AWS EC2 instance and then optionally terminate it as a post step.
 
 ## Examples
 
@@ -29,7 +29,13 @@ This action will create and run an AWS EC2 instance.
           instance-type: "c7g.large"
           instance-profile: "TruemarkEC2RoleforSSM"
           region: "us-east-2"
+          user-data: |
+            #!/bin/bash
+            echo "Do something cool here"
 ```
+
+You can use default-arm64 and default-amd64 to get the latest Amazon Linux ARM.
+You can also use the AMI ID of your own AMI.
 
 ## Development
 
