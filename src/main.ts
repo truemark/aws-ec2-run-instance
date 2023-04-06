@@ -10,7 +10,7 @@ async function run(): Promise<void> {
     const config = loadConfig()
     const ssmClient = new SSMClient({region: config.region})
     const ec2Client = new EC2Client({region: config.region})
-    if (process.env['STATE_isPost']) {
+    if (process.env['STATE_isPost'] === 'true') {
       // post
       if (config.terminateOnPost) {
         const instanceId = process.env['STATE_instanceId'] || ''
