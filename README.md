@@ -1,8 +1,8 @@
-<p align="center">
+# AWS EC2 Run Instance Action
+
+<p>
   <a href="https://github.com/truemark/aws-ec2-run-instance-action"><img alt="typescript-action status" src="https://github.com/truemark/aws-ec2-run-instance-action/workflows/build-test/badge.svg"></a>
 </p>
-
-# AWS EC2 Run Instance Action
 
 This action will create and run an AWS EC2 instance and then optionally terminate it as a post step.
 
