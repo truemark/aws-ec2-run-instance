@@ -10,7 +10,7 @@ async function run(): Promise<void> {
     const config = loadConfig()
     const ssmClient = new SSMClient({region: config.region})
     const ec2Client = new EC2Client({region: config.region})
-    if (process.env['STATE_isPost'] ?? false) {
+    if (process.env['STATE_isPost']) {
       // post
       if (config.terminateOnPost) {
         const instanceId = process.env['STATE_instanceId'] || ''
@@ -22,6 +22,7 @@ async function run(): Promise<void> {
       }
     } else {
       // main
+      saveState('isPost', 'true') // next step is post
       let imageId = config.imageId
       if (imageId === 'default-arm64') {
         imageId = await defaultArm64ImageId(ssmClient)
