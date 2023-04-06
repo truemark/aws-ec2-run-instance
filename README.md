@@ -1,5 +1,10 @@
 # AWS EC2 Run Instance Action
 
+[![LICENSE](https://img.shields.io/badge/license-BSD3-green)](LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/tremark/aws-ec2-run-instance-action)](https://github.com/truemark/aws-ec2-run-instance-action/releases)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/truemark/aws-ec2-run-instance-action)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/truemark/aws-ec2-run-instance-action)
+
 <p>
   <a href="https://github.com/truemark/aws-ec2-run-instance-action"><img alt="typescript-action status" src="https://github.com/truemark/aws-ec2-run-instance-action/workflows/build-test/badge.svg"></a>
 </p>
