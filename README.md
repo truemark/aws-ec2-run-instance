@@ -58,7 +58,7 @@ You can also use the AMI ID of your own AMI.
 | instance-shutdown-behavior    | string     | No       | Shutdown behavior for the EC2 instance. This may be stop or terminate. Default is terminate |
 | region                        | string     | Yes      | AWS region to use for the EC2 instance                                                      |
 | key-name                      | string     | No       | SSH key name to use for the EC2 instance                                                    |
-| terminate-on-post             | boolean    | No       | Terminate the EC2 instance after the post step                                              |
+| terminate-on-post             | boolean    | No       | Terminate the EC2 instance after the post step. Default is true.                            |
 
 ## Outputs
 | Name                          | Type       | Description                                                                                 |
