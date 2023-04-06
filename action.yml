@@ -4,7 +4,7 @@ author: 'TrueMark'
 inputs:
   subnet-id:
     required: true
-    description: 'Subnet to place the EC2 instance'
+    description: 'Subnet ID to launch the instance in'
   security-group-id:
     required: true
     description: 'Security group to apply to the EC2 instance'
