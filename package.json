@@ -22,8 +22,8 @@
     "node",
     "setup"
   ],
-  "author": "",
-  "license": "MIT",
+  "author": "TrueMark",
+  "license": "BSD-3-Clause",
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@aws-sdk/client-ec2": "^3.304.0",
