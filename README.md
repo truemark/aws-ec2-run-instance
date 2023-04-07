@@ -26,7 +26,7 @@ This action will create and run an AWS EC2 instance and then optionally terminat
           aws-region: "us-east-2"
       - name: Setup ARM64 EC2
         id: ec2-arm64
-        uses: truemark/aws-ec2-run-instance-action@v2
+        uses: truemark/aws-ec2-run-instance-action@v3
         with:
           security-group-id: "sg-0baf5bcfe9f21efa0"
           subnet-id: "subnet-09a35a2abd797dbf0"
