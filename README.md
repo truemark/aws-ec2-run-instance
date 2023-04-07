@@ -4,10 +4,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/truemark/aws-ec2-run-instance-action)](https://github.com/truemark/aws-ec2-run-instance-action/releases)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/truemark/aws-ec2-run-instance-action)
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/truemark/aws-ec2-run-instance-action)
-
-<p>
-  <a href="https://github.com/truemark/aws-ec2-run-instance-action"><img alt="typescript-action status" src="https://github.com/truemark/aws-ec2-run-instance-action/workflows/build-test/badge.svg"></a>
-</p>
+![build-test](https://github.com/truemark/aws-ec2-run-instance-action/workflows/build-test/badge.svg)
 
 This action will create and run an AWS EC2 instance and then optionally terminate it as a post step.
 
