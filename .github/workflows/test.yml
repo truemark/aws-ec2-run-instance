@@ -28,7 +28,7 @@ jobs:
         uses: ./
         with:
           security-group-id: "${{ vars.SECURITY_GROUP_ID }}"
-          subnet-id: "${{ vars.SUBNET_ID"
+          subnet-id: "${{ vars.SUBNET_ID }}"
           instance-profile: "${{ vars.INSTANCE_PROFILE }}"
           region: "us-east-2"
           image-id: "default-arm64"
