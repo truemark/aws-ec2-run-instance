@@ -24,7 +24,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: "${{ secrets.AWS_ASSUME_ROLE }}"
-          aws-region: "us-east-1"
+          aws-region: "us-east-2"
       - name: Generate SSH Key
         id: ssh-key
         uses: truemark/generate-ssh-key-action@v1
