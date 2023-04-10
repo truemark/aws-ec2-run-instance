@@ -51,7 +51,7 @@ inputs:
   name:
     required: false
     description: 'Name of the EC2 instance to be added to the tags'
-    default: ${{ github.event.repository.name }}
+    default: ${{ github.event.repository.name }}-${{github.run_number}}
 outputs:
   instance-id:
     description: 'The instance ID of the EC2 instance'
