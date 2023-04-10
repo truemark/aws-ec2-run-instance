@@ -15,10 +15,43 @@ jobs:
           npm install
       - run: |
           npm run all
-#  test: # make sure the action works on a clean machine without building
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./
-#        with:
-#          milliseconds: 1000
+  test: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Generate SSH Key
+        id: ssh-key
+        uses: truemark/generate-ssh-key-action@v1
+      - name: Setup instance
+        id: instance
+        uses: ./
+        with:
+          security-group-id: "${{ vars.SECURITY_GROUP_ID }}"
+          subnet-id: "${{ vars.SUBNET_ID"
+          instance-profile: "${{ vars.INSTANCE_PROFILE }}"
+          region: "us-east-2"
+          image-id: "default-arm64"
+          instance-type: "c7g.large"
+          user-data: |
+            #!/usr/bin/env bash
+            mkdir -p /home/ec2-user/.ssh
+            touch /home/ec2-user/.ssh/authorized_keys
+            chmod 700 /home/ec2-user/.ssh
+            chmod 600 /home/ec2-user/.ssh/authorized_keys
+            echo "${{ steps.ssh-key.outputs.public-key }}" >> /home/ec2-user/.ssh/authorized_keys
+      - name: Wait for instances
+        id: ec2-wait
+        uses: truemark/aws-ec2-instance-wait-action@v2
+        with:
+          instance-ids: ${{ steps.instance.outputs.instance-id }}
+          region: "us-east-2"
+          timeout-ms: "600000"
+      - name: Describe Instance
+        id: describe-instance
+        uses: truemark/aws-ec2-describe-instance-action@v1
+        with:
+          instance-id: ${{ steps.instance.outputs.instance-id }}
+          region: "us-east-2"
+      - name: Validate
+        run: ssh ec2-user@${{ steps.ec2-describe-instance.outputs.public-dns-name }} "cat /etc/amazon-linux-release"
