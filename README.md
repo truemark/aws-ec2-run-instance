@@ -41,21 +41,22 @@ You can also use the AMI ID of your own AMI.
 
 ## Inputs
 
-| Name                          | Type       | Required | Description                                                                                 |
-|-------------------------------|------------|----------|---------------------------------------------------------------------------------------------|
-| subnet-id                     | string     | Yes      | Subnet ID to launch the instance in                                                         |
-| security-group-id             | string     | Yes      | Security group to apply to the EC2 instance                                                 |
-| image-id                      | string     | Yes      | Image ID to use for the EC2 instance. Also accepts default-arm64 and default-amd64 options  |
- | instance-type                 | string     | Yes      | Instance type to use for the EC2 instance                                                   |
-| instance-profile              | string     | No       | Instance profile to use for the EC2 instance                                                |
-| volume-size                   | number     | No       | Volume size in GB to use for the EC2 instance                                               |
-| associate-public-ip-address   | boolean    | No       | Associate a public IP address to the instance                                               |
-| tags                          | string     | No       | Tags to apply to the EC2 instance. Format: JSON                                             |
-| user-data                     | string     | No       | User data to apply to the EC2 instance                                                      |
-| instance-shutdown-behavior    | string     | No       | Shutdown behavior for the EC2 instance. This may be stop or terminate. Default is terminate |
-| region                        | string     | Yes      | AWS region to use for the EC2 instance                                                      |
-| key-name                      | string     | No       | SSH key name to use for the EC2 instance                                                    |
-| terminate-on-post             | boolean    | No       | Terminate the EC2 instance after the post step. Default is true.                            |
+| Name                          | Type       | Required | Description                                                                                     |
+|-------------------------------|------------|----------|-------------------------------------------------------------------------------------------------|
+| subnet-id                     | string     | Yes      | Subnet ID to launch the instance in                                                             |
+| security-group-id             | string     | Yes      | Security group to apply to the EC2 instance                                                     |
+| image-id                      | string     | Yes      | Image ID to use for the EC2 instance. Also accepts default-arm64 and default-amd64 options      |
+ | instance-type                 | string     | Yes      | Instance type to use for the EC2 instance                                                       |
+| instance-profile              | string     | No       | Instance profile to use for the EC2 instance                                                    |
+| volume-size                   | number     | No       | Volume size in GB to use for the EC2 instance                                                   |
+| associate-public-ip-address   | boolean    | No       | Associate a public IP address to the instance                                                   |
+| tags                          | string     | No       | Tags to apply to the EC2 instance. Format: JSON                                                 |
+| user-data                     | string     | No       | User data to apply to the EC2 instance                                                          |
+| instance-shutdown-behavior    | string     | No       | Shutdown behavior for the EC2 instance. This may be stop or terminate. Default is terminate     |
+| region                        | string     | Yes      | AWS region to use for the EC2 instance                                                          |
+| key-name                      | string     | No       | SSH key name to use for the EC2 instance                                                        |
+| terminate-on-post             | boolean    | No       | Terminate the EC2 instance after the post step. Default is true.                                |
+| name                          | string     | No       | Name to use for the EC2 instance. Default is the name of the git repisitory running the action. |
 
 ## Outputs
 | Name                          | Type       | Description                                                                                 |
