@@ -42,7 +42,7 @@ export interface RunInstanceProps {
   readonly associatePublicIpAddress?: boolean
   readonly subnetId: string
   readonly keyName?: string
-  readonly tags?: {[key: string]: string}
+  readonly tags: {[key: string]: string}
   readonly userData?: string[]
   readonly instanceShutdownBehavior?: string
   readonly instanceProfile?: string
@@ -83,14 +83,12 @@ export async function runInstance(client: EC2Client, props: RunInstanceProps): P
       }
     ],
     UserData: props.userData ? Buffer.from(props.userData.join('\n')).toString('base64') : undefined,
-    TagSpecifications: props.tags
-      ? [
-          {
-            ResourceType: 'instance',
-            Tags: Object.entries(props.tags ?? {}).map(([key, value]) => ({Key: key, Value: value}))
-          }
-        ]
-      : undefined,
+    TagSpecifications: [
+      {
+        ResourceType: 'instance',
+        Tags: Object.entries(props.tags).map(([key, value]) => ({Key: key, Value: value}))
+      }
+    ],
     IamInstanceProfile: {
       Name: props.instanceProfile
     }
