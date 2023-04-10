@@ -48,6 +48,10 @@ inputs:
     required: false
     description: 'Terminate the EC2 instance after the post step'
     default: 'true'
+  name:
+    required: false
+    description: 'Name of the EC2 instance to be added to the tags'
+    default: ${{ github.event.repository.name }}
 outputs:
   instance-id:
     description: 'The instance ID of the EC2 instance'

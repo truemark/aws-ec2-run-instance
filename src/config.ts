@@ -50,6 +50,7 @@ export interface Config {
   readonly userData?: string[]
   readonly instanceShutdownBehavior?: string
   readonly terminateOnPost?: boolean
+  readonly name: string
 }
 
 export function loadConfig(): Config {
@@ -66,6 +67,7 @@ export function loadConfig(): Config {
     tags: optionalJson<{[key: string]: string}>(getInput('tags')),
     userData: optionalArray(getInput('user-data')),
     instanceShutdownBehavior: optionalValues(getInput('instance-shutdown-behavior'), ['stop', 'terminate']),
-    terminateOnPost: optionalBoolean(getInput('terminate-on-post'))
+    terminateOnPost: optionalBoolean(getInput('terminate-on-post')),
+    name: required(getInput('name'))
   }
 }
