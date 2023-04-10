@@ -1,6 +1,9 @@
 name: 'AWS EC2 Run Instance'
 description: 'Creates and runs an EC2 instance'
 author: 'TrueMark'
+branding:
+  icon: 'check-circle'
+  color: 'red'
 inputs:
   subnet-id:
     required: true
