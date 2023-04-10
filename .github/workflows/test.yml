@@ -63,4 +63,4 @@ jobs:
           instance-id: ${{ steps.instance.outputs.instance-id }}
           region: "us-east-2"
       - name: Validate
-        run: ssh ec2-user@${{ steps.ec2-describe-instance.outputs.public-dns-name }} "cat /etc/amazon-linux-release"
+        run: ssh ec2-user@${{ steps.describe-instance.outputs.public-dns-name }} "cat /etc/amazon-linux-release"
