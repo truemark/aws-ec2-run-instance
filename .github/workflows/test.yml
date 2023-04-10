@@ -56,16 +56,16 @@ jobs:
           instance-ids: ${{ steps.instance.outputs.instance-id }}
           region: "us-east-2"
           timeout-ms: "600000"
-      - name: SSH Known Hosts
-        id: ssh-known-hosts
-        uses: truemark/ssh-known-hosts-action@v1
-        with:
-          scan-hosts: ${{ steps.describe-instance.outputs.public-dns-name }}
       - name: Describe Instance
         id: describe-instance
         uses: truemark/aws-ec2-describe-instance-action@v1
         with:
           instance-id: ${{ steps.instance.outputs.instance-id }}
           region: "us-east-2"
+      - name: SSH Known Hosts
+        id: ssh-known-hosts
+        uses: truemark/ssh-known-hosts-action@v1
+        with:
+          scan-hosts: ${{ steps.describe-instance.outputs.public-dns-name }}
       - name: Validate
         run: ssh ec2-user@${{ steps.describe-instance.outputs.public-dns-name }} "cat /etc/amazon-linux-release"
