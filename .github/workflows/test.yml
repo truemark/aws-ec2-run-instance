@@ -58,7 +58,7 @@ jobs:
           timeout-ms: "600000"
       - name: Describe Instance
         id: describe-instance
-        uses: truemark/aws-ec2-describe-instance-action@v1
+        uses: truemark/aws-ec2-describe-instance-action@v2
         with:
           instance-id: ${{ steps.instance.outputs.instance-id }}
           region: "us-east-2"
