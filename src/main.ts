@@ -12,8 +12,8 @@ async function run(): Promise<void> {
     if (tags['Name'] === undefined) {
       tags['Name'] = config.name
     }
-    const ssmClient = new SSMClient({region: config.region})
-    const ec2Client = new EC2Client({region: config.region})
+    const ssmClient = new SSMClient({region: config.region, maxAttempts: 5, retryMode: 'adaptive'})
+    const ec2Client = new EC2Client({region: config.region, maxAttempts: 5, retryMode: 'adaptive'})
     if (process.env['STATE_isPost'] === 'true') {
       // post
       if (config.terminateOnPost) {
