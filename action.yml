@@ -24,6 +24,10 @@ inputs:
     required: false
     description: 'Volume size in GB to use for the EC2 instance'
     default: '8'
+  root-device:
+    required: false
+    description: 'Root device of the AMI'
+    default: '/dev/xvda'
   associate-public-ip-address:
     required: false
     description: 'Associate a public IP address to the EC2 instance'

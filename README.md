@@ -46,9 +46,10 @@ You can also use the AMI ID of your own AMI.
 | subnet-id                     | string     | Yes      | Subnet ID to launch the instance in                                                         |
 | security-group-id             | string     | Yes      | Security group to apply to the EC2 instance                                                 |
 | image-id                      | string     | Yes      | Image ID to use for the EC2 instance. Also accepts default-arm64 and default-amd64 options  |
- | instance-type                 | string     | Yes      | Instance type to use for the EC2 instance                                                   |
+| instance-type                 | string     | Yes      | Instance type to use for the EC2 instance                                                   |
 | instance-profile              | string     | No       | Instance profile to use for the EC2 instance                                                |
 | volume-size                   | number     | No       | Volume size in GB to use for the EC2 instance                                               |
+| root-device                   | string     | No       | Root device used by the AMI. Default is `/dev/xvda`                                         |
 | associate-public-ip-address   | boolean    | No       | Associate a public IP address to the instance                                               |
 | tags                          | string     | No       | Tags to apply to the EC2 instance. Format: JSON                                             |
 | user-data                     | string     | No       | User data to apply to the EC2 instance                                                      |

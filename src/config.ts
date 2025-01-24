@@ -44,6 +44,7 @@ export interface Config {
   readonly instanceProfile: string
   readonly imageId: string
   readonly volumeSize?: number
+  readonly rootDevice?: string
   readonly associatePublicIpAddress?: boolean
   readonly keyName?: string
   readonly tags?: {[key: string]: string}
@@ -62,6 +63,7 @@ export function loadConfig(): Config {
     instanceProfile: required(getInput('instance-profile')),
     imageId: required(getInput('image-id')),
     volumeSize: optionalNumber(getInput('volume-size')),
+    rootDevice: undefinedIfEmpty(getInput('root-device')),
     associatePublicIpAddress: optionalBoolean(getInput('associate-public-ip-address')),
     keyName: undefinedIfEmpty(getInput('key-name')),
     tags: optionalJson<{[key: string]: string}>(getInput('tags')),
