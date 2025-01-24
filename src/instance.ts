@@ -39,6 +39,7 @@ export interface RunInstanceProps {
   readonly imageId: string
   readonly instanceType: string
   readonly volumeSize?: number
+  readonly rootDevice?: string
   readonly associatePublicIpAddress?: boolean
   readonly subnetId: string
   readonly keyName?: string
@@ -65,7 +66,7 @@ export async function runInstance(client: EC2Client, props: RunInstanceProps): P
     KeyName: props.keyName,
     BlockDeviceMappings: [
       {
-        DeviceName: '/dev/xvda',
+        DeviceName: props.rootDevice ?? '/dev/xvda',
         Ebs: {
           VolumeSize: props.volumeSize ?? 8,
           DeleteOnTermination: true,

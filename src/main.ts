@@ -39,6 +39,7 @@ async function run(): Promise<void> {
         imageId,
         instanceType: config.instanceType,
         volumeSize: config.volumeSize,
+        rootDevice: config.rootDevice,
         associatePublicIpAddress: config.associatePublicIpAddress,
         subnetId: config.subnetId,
         keyName: config.keyName,
